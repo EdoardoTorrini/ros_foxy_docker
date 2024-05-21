@@ -1,16 +1,13 @@
 # Docker ROS2 - Foxy
+Docker created to be able to simulate the entire driving stack of the Formula Student Driverless university project, includes all the tools to be able to use ros foxy from the command line and created the docker image using the `docker-compose.yml` it is also possible to have graphical tools such as `rviz2` by accessing to the docker via `ssh`
 
 ## Usage
+
+### setup
+Preparing the environment by installing the necessary docker plugins and adding kernel modules to enable virtual CANBus networking
 ```bash
 $ chmod +x ./setup.sh
 $ ./setup.sh
-```
-For have all the commands available in the docker it is suggested to launch the docker creating the `docker-compose.yml`.
-
-And launch gain the access to the docker using the command:
-```bash
-$ docker compose up --build -d
-$ ssh -p 2224 -Y mmr@localhost
 ```
 
 ## docker-compose.yml
@@ -33,3 +30,11 @@ networks:
       vxcan.peer: can_docker
       vxcan.id: 0
 ```
+
+## execute
+```bash
+$ docker compose up --build -d
+$ ssh -p 2224 -Y mmr@localhost
+```
+
+Credit: https://github.com/wsovalle/docker-vxcan
